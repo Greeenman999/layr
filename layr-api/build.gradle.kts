@@ -22,7 +22,7 @@ publishing {
 		create<MavenPublication>("maven") {
 			groupId = "de.greenman999"
 			artifactId = "layr-api"
-			version = "1.0-SNAPSHOT"
+			version = project.version as String?
 
 			from(components["java"])
 		}
