@@ -7,7 +7,8 @@
 
 package de.greenman999.layr;
 
-import de.greenman999.layr.api.Test2Class;
+import de.greenman999.layr.api.LayrProvider;
+import de.greenman999.layr.impl.MyLayrFactory;
 import de.greenman999.layr.platform.Platform;
 
 import org.slf4j.Logger;
@@ -40,7 +41,8 @@ public class LayrMod {
 		LOGGER.info("Initializing {} Client on {}", MOD_ID, LayrMod.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
 
-		Test2Class.setName("Layr Client");
+		LayrProvider.registerFactory(new MyLayrFactory());
+		LOGGER.info("Registered MyLayrFactory with LayrProvider");
 	}
 
 	static Platform xplat() {
