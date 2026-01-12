@@ -18,12 +18,12 @@ import org.gradle.api.Project
 import org.gradle.api.file.DuplicatesStrategy
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.provider.Property
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.Copy
-import org.gradle.api.tasks.JavaExec
 import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
 import org.gradle.jvm.tasks.Jar
 import org.gradle.jvm.toolchain.JavaLanguageVersion
-import org.gradle.jvm.toolchain.JavaToolchainService
 import org.gradle.kotlin.dsl.*
 import org.gradle.language.jvm.tasks.ProcessResources
 import org.gradle.plugins.ide.idea.model.IdeaModel
@@ -73,6 +73,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 			"java",
 			"me.modmuss50.mod-publish-plugin",
 			"idea",
+			"maven-publish",
 		).forEach { apply(plugin = it) }
 
 		version = "$modVersion$channelTag+$mcVersion-$loader"
@@ -301,6 +302,16 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 
 			modrinth(deps, currentVersion, additionalVersions, mrStaging, modrinthAccessToken)
 			if (!mrStaging) curseforge(deps, currentVersion, additionalVersions, false, curseforgeAccessToken)
+		}
+
+		extensions.configure<PublishingExtension>("publishing") {
+			publications.create<MavenPublication>("mod") {
+				groupId = prop("mod.group")
+				artifactId = prop("mod.id")
+				version = fullVersion
+
+				from(components["java"])
+			}
 		}
 	}
 
