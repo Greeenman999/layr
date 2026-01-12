@@ -9,7 +9,7 @@ package de.greenman999.layr.platform.fabric.datagen;
 
 //? fabric && != 1.19.2 {
 
-import de.greenman999.layr.Layr;
+import de.greenman999.layr.LayrMod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -48,7 +48,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	public @NotNull String getName() {
-		return Layr.MOD_ID + ":recipe_provider";
+		return LayrMod.MOD_ID + ":recipe_provider";
 	}
 
 	static class IntRecipeProvider extends RecipeProvider {

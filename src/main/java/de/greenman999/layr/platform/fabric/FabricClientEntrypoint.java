@@ -8,7 +8,7 @@ package de.greenman999.layr.platform.fabric;
 
 //? fabric {
 
-import de.greenman999.layr.Layr;
+import de.greenman999.layr.LayrMod;
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -17,7 +17,7 @@ public class FabricClientEntrypoint implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		Layr.onInitializeClient();
+		LayrMod.onInitializeClient();
 	}
 
 }

@@ -8,14 +8,14 @@ package de.greenman999.layr.platform.forge;
 
 //? forge {
 
-/*import de.greenman999.layr.Layr;
+/*import de.greenman999.layr.LayrMod;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(Layr.MOD_ID)
+@Mod(LayrMod.MOD_ID)
 public class ForgeEntrypoint {
 
 	public ForgeEntrypoint() {
-		Layr.onInitialize();
+		LayrMod.onInitialize();
 	}
 }
 *///?}

@@ -7,7 +7,7 @@
 
 package de.greenman999.layr.mixin;
 
-import de.greenman999.layr.Layr;
+import de.greenman999.layr.LayrMod;
 import dev.kikugie.fletching_table.annotation.MixinEnvironment;
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,7 +21,7 @@ public class ExampleMixin {
 
 	@Inject(method = "loadLevel", at = @At("RETURN"))
 	private void afterLoadLevel(CallbackInfo ci) {
-		Layr.LOGGER.info("Level Loaded!");
+		LayrMod.LOGGER.info("Level Loaded!");
 	}
 
 }

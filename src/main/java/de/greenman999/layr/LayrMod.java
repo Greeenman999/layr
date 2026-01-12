@@ -22,7 +22,7 @@ import de.greenman999.layr.platform.fabric.FabricPlatform;
 *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
-public class Layr {
+public class LayrMod {
 
 	public static final String MOD_ID = /*$ mod_id*/ "modtemplate";
 	public static final String MOD_VERSION = /*$ mod_version*/ "0.1.0";
@@ -32,12 +32,12 @@ public class Layr {
 	private static final Platform PLATFORM = createPlatformInstance();
 
 	public static void onInitialize() {
-		LOGGER.info("Initializing {} on {}", MOD_ID, Layr.xplat().loader());
+		LOGGER.info("Initializing {} on {}", MOD_ID, LayrMod.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
 	}
 
 	public static void onInitializeClient() {
-		LOGGER.info("Initializing {} Client on {}", MOD_ID, Layr.xplat().loader());
+		LOGGER.info("Initializing {} Client on {}", MOD_ID, LayrMod.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
 
 		Test2Class.setName("Layr Client");

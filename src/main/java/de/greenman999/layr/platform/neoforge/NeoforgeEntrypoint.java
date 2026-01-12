@@ -8,14 +8,14 @@ package de.greenman999.layr.platform.neoforge;
 
 //? neoforge {
 
-/*import de.greenman999.layr.Layr;
+/*import de.greenman999.layr.LayrMod;
 import net.neoforged.fml.common.Mod;
 
-@Mod(Layr.MOD_ID)
+@Mod(LayrMod.MOD_ID)
 public class NeoforgeEntrypoint {
 
 	public NeoforgeEntrypoint() {
-		Layr.onInitialize();
+		LayrMod.onInitialize();
 	}
 }
 *///?}
