@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="rotgruengelb edited" pattern="file:build.forge.gradle.kts||file:gradle/libs.versions.toml||file:kotlin/ModPlatformPlugin.kt" />
-</component>
