@@ -53,6 +53,11 @@ fabricApi {
 	}
 }
 
+repositories {
+	mavenCentral()
+	maven("https://maven.parchmentmc.org") { name = "ParchmentMC" }
+}
+
 dependencies {
 	minecraft("com.mojang:minecraft:${prop("deps.minecraft")}")
 	mappings(
