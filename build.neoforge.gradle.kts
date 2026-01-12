@@ -64,6 +64,8 @@ repositories {
 dependencies {
 	implementation(libs.moulberry.mixinconstraints)
 	jarJar(libs.moulberry.mixinconstraints)
+
+	implementation(project(":layr-api"))
 }
 
 tasks.named("createMinecraftArtifacts") {

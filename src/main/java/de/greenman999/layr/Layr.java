@@ -7,6 +7,7 @@
 
 package de.greenman999.layr;
 
+import de.greenman999.layr.api.Test2Class;
 import de.greenman999.layr.platform.Platform;
 
 import org.slf4j.Logger;
@@ -38,6 +39,8 @@ public class Layr {
 	public static void onInitializeClient() {
 		LOGGER.info("Initializing {} Client on {}", MOD_ID, Layr.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
+
+		Test2Class.setName("Layr Client");
 	}
 
 	static Platform xplat() {
