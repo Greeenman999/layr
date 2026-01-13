@@ -1,26 +1,15 @@
 package de.greenman999.layr.impl;
 
-import de.greenman999.layr.LayrMod;
 import de.greenman999.layr.api.Layr;
+import de.greenman999.layr.api.gui.screen.ScreenManager;
+import de.greenman999.layr.impl.gui.screen.ScreenManagerImpl;
+import net.minecraft.client.Minecraft;
 
 public class MyLayr implements Layr {
-	@Override
-	public void init() {
-		LayrMod.LOGGER.info("MyLayr initialized!");
-	}
 
 	@Override
-	public void tick() {
-
+	public ScreenManager getScreenManager() {
+		return new ScreenManagerImpl(Minecraft.getInstance());
 	}
 
-	@Override
-	public void render() {
-
-	}
-
-	@Override
-	public void dispose() {
-		LayrMod.LOGGER.info("MyLayr disposed!");
-	}
 }
