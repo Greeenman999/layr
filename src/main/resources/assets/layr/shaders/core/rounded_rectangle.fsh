@@ -2,26 +2,27 @@
 
 #moj_import <minecraft:dynamictransforms.glsl>
 
-in vec4 vertexColor;
-in vec4 radius;
-in vec2 texCoord0;
-in vec2 widthHeight;
+in vec4 v_color;
+in vec4 v_cornerRadii;
+in vec2 v_uv;
+in vec2 v_size;
 
 out vec4 fragColor;
 
-float sdRoundBox(vec2 p, vec2 b, vec4 r) {
-    r.xy = (p.x > 0.0) ? r.xy : r.zw;
-    r.x  = (p.y > 0.0) ? r.x  : r.y;
-    vec2 q = abs(p) - b + r.x;
-    return min(max(q.x,q.y), 0.0) + length(max(q, 0.0)) - r.x;
+float signedDistanceRoundedRect(vec2 point, vec2 halfExtents, vec4 cornerRadii) {
+    cornerRadii.xy = (point.x > 0.0) ? cornerRadii.xy : cornerRadii.zw;
+    cornerRadii.x  = (point.y > 0.0) ? cornerRadii.x  : cornerRadii.y;
+    vec2 q = abs(point) - halfExtents + cornerRadii.x;
+    return min(max(q.x,q.y), 0.0) + length(max(q, 0.0)) - cornerRadii.x;
 }
 
 void main() {
-    float distance = sdRoundBox(texCoord0 - widthHeight / 2, widthHeight / 2, radius);
-    float fw = fwidth(distance);
-    distance = smoothstep(0, fw, distance);
-    float alpha = 1-distance;
-    vec4 color = ColorModulator * vertexColor * vec4(1, 1, 1, alpha);
-    if (color.a == 0) discard;
+    vec2 halfSize = v_size / 2.0;
+    float signedDistance = signedDistanceRoundedRect(v_uv - halfSize, halfSize, v_cornerRadii);
+    float antialiasWidth = fwidth(signedDistance);
+    float smoothed = smoothstep(0.0, antialiasWidth, signedDistance);
+    float alpha = 1 - smoothed;
+    vec4 color = ColorModulator * v_color * vec4(1.0, 1.0, 1.0, alpha);
+    if (color.a == 0.0) discard;
     fragColor = color;
 }
