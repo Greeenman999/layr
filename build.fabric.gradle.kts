@@ -28,7 +28,7 @@ platform {
 }
 
 loom {
-	accessWidenerPath = rootProject.file("src/main/resources/aw/${stonecutter.current.version}.accesswidener")
+	accessWidenerPath = rootProject.file("src/main/resources/aw/${stonecutter.current.version.split("-")[0]}.accesswidener")
 	runs.named("client") {
 		client()
 		ideConfigGenerated(true)
