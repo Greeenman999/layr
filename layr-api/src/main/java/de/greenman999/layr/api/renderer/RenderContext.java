@@ -12,4 +12,9 @@ public interface RenderContext {
 	 * Draw a filled rectangle with current transform.
 	 */
 	void fillRect(int x, int y, int width, int height, Color color);
+
+	/**
+	 * Draw a filled rounded rectangle with current transform.
+	 */
+	void fillRoundedRect(int x, int y, int width, int height, float radius, Color color);
 }
