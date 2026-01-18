@@ -17,11 +17,14 @@ import java.awt.*;
  * Wraps a LayrScreen in a Minecraft Screen for Fabric.
  */
 public class LayrScreenWrapper extends Screen {
-	final LayrScreen layrScreen;
 
-	public LayrScreenWrapper(LayrScreen layrScreen) {
+	public final LayrScreen layrScreen;
+	public final Screen parent;
+
+	public LayrScreenWrapper(LayrScreen layrScreen, Screen parent) {
 		super(Component.empty()); // or custom title
 		this.layrScreen = layrScreen;
+		this.parent = parent;
 	}
 
 	@Override
@@ -42,8 +45,7 @@ public class LayrScreenWrapper extends Screen {
 	}
 
 	@Override
-	public void removed() {
-		super.removed();
+	public void onClose() {
 		layrScreen.onClose();
 	}
 
@@ -69,6 +71,10 @@ public class LayrScreenWrapper extends Screen {
 
 	@Override
 	public boolean keyPressed(KeyEvent event) {
+		if (event.isEscape()) {
+			minecraft.setScreen(parent);
+			return true;
+		}
 		return layrScreen.onKeyPress(event.key(), event.scancode(), event.modifiers()) || super.keyPressed(event);
 	}
 

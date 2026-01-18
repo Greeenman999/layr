@@ -6,6 +6,8 @@ import net.minecraft.client.Minecraft;
 
 import java.util.Optional;
 
+// TODO: implement parent screen
+// 		is this even needed?
 public class ScreenManagerImpl implements ScreenManager {
 	private final Minecraft minecraft;
 
@@ -15,7 +17,7 @@ public class ScreenManagerImpl implements ScreenManager {
 
 	@Override
 	public void open(LayrScreen screen) {
-		minecraft.setScreen(new LayrScreenWrapper(screen));
+		minecraft.setScreen(new LayrScreenWrapper(screen, null));
 	}
 
 	@Override
